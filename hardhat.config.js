@@ -1,5 +1,5 @@
 require("@nomiclabs/hardhat-waffle");
-
+let secret = require("./secret.json");
 // This is a sample Hardhat task. To learn how to create your own go to
 // https://hardhat.org/guides/create-task.html
 task("accounts", "Prints the list of accounts", async (taskArgs, hre) => {
@@ -21,6 +21,14 @@ module.exports = {
   networks: {
     ropsten: {
       url: secret.url,
+      accounts: [`${secret.key}`],
+    },
+    rinkeby: {
+      url: secret.url_rinkeby,
+      accounts: [`${secret.key}`],
+    },
+    goerli: {
+      url: secret.url_goerli,
       accounts: [`${secret.key}`],
     },
     local: {
