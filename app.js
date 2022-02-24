@@ -17,17 +17,17 @@ app.use(bodyParser.json());
 
 var usersRouter = require("./routes/users");
 var chainRouter = require("./routes/chain");
-
+var pairRouter = require('./routes/pair');
 //------------ import router
 // app.use("/", indexRouter);
 app.use("/users", usersRouter);
 app.use("/chains",chainRouter);
+app.use("/pair", pairRouter);
 
 
 
 
-
-const PORT = process.env.PORT || 3000;
+const PORT = process.env.PORT || 5000;
 mongoose
   .connect(process.env.MONGODB_SERVER, { useNewUrlParser: true })
   .then(() => app.listen(PORT))

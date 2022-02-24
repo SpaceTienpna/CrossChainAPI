@@ -36,7 +36,7 @@ module.exports = {
       accounts: [`${secret.key_local}`],
     },
     fuji: {
-      url: secret.url_moralist,
+      url: secret.url_avalanche,
       accounts: [`${secret.key}`],
     },
   },

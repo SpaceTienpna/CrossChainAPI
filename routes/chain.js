@@ -11,7 +11,12 @@ router.get("/", async (req, res, next) => {
 router.get("/getByChainId", async (req, res, next) => {
   const { chainId } = req.query;
   const chain = await Chain.findOne({ chainId: chainId });
-  if (!chain) return res.status(404).json("Not found");
+  if (!chain)
+    return res
+      .status(200)
+      .json({
+        chain: { chainId: "0", chainName: "No network found", currency: "N/a" },
+      });
   return res.status(200).json({ chain });
 });
 
