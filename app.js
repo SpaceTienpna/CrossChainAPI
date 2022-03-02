@@ -18,12 +18,13 @@ app.use(bodyParser.json());
 var usersRouter = require("./routes/users");
 var chainRouter = require("./routes/chain");
 var pairRouter = require('./routes/pair');
+var tokenRouter = require('./routes/token');
 //------------ import router
 // app.use("/", indexRouter);
 app.use("/users", usersRouter);
 app.use("/chains",chainRouter);
 app.use("/pair", pairRouter);
-
+app.use("/token", tokenRouter);
 
 
 

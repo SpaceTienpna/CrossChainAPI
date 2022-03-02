@@ -31,6 +31,10 @@ module.exports = {
       url: secret.url_goerli,
       accounts: [`${secret.key}`],
     },
+    binance: {
+      url: secret.url_binance,
+      accounts: [`${secret.key}`],
+    },
     local: {
       url: secret.url_local,
       accounts: [`${secret.key_local}`],
