@@ -38,28 +38,32 @@ router.get("/getPair", async (req, res, next) => {
 });
 
 router.post("/", async (req, res, next) => {
-  const { token1, token2, chain1, chain2 } = req.body;
+  const { token1, token2, chain1, chain2, contractTool1, contractTool2 } = req.body;
   const dto = new Pair({
     token_1: token1,
     token_2: token2,
     chain_1: chain1,
     chain_2: chain2,
+    contractTool_1: contractTool1,
+    contractTool_2: contractTool2,
     isReverse: false,
   });
 
-  const reverse = MakingReverse(token1, token2, chain1, chain2);
+  const reverse = MakingReverse(token1, token2, chain1, chain2, contractTool1, contractTool2);
   await dto.save();
   await reverse.save();
   return res.status(200).json({message: "Create pair successfully!!"});
 });
 
 
-const MakingReverse = (token1, token2, chain1, chain2) => {
+const MakingReverse = (token1, token2, chain1, chain2, contractTool1, contractTool2) => {
    return new Pair({
      token_1: token2,
      token_2: token1,
      chain_1: chain2,
      chain_2: chain1,
+     contractTool_1: contractTool2,
+     contractTool_2: contractTool1,
      isReverse: true
    });
 }
